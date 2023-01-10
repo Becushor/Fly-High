@@ -56,6 +56,7 @@ public class Bird : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         rigid.bodyType = RigidbodyType2D.Static;
+        OnDied?.Invoke(this, EventArgs.Empty);
     }
 
     private void PlayJumpAnim(bool isJumping)

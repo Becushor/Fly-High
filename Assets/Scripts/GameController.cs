@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController instance = null;
 
-    public Text scoreText = null;
+    public Text currentScoreText = null;
 
     private void Awake()
     {
@@ -22,6 +22,6 @@ public class GameController : MonoBehaviour
     void Update()
     {
         Bird.instance.CountScore();
-        scoreText.text = Bird.instance.ShowScore().ToString();
+        currentScoreText.text = Bird.instance.ShowScore().ToString();
     }
 }
