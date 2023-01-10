@@ -1,12 +1,17 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Bird : MonoBehaviour
 {
+    public static Bird instance = null;
+
     private Rigidbody2D rigid;
     private Animator animator;
-    public static Bird instance = null;
+    public event EventHandler OnDied;
+
+    private int score = 0;
 
     private static float jumpForce = 3f;
 
@@ -56,5 +61,18 @@ public class Bird : MonoBehaviour
     private void PlayJumpAnim(bool isJumping)
     {
         animator.SetBool("isJumping", isJumping);
+    }
+
+    public void CountScore()
+    {
+        if (rigid.velocity.y > 0 && transform.position.y > score)
+        {
+            score = (int)transform.position.y;
+        }
+    }
+
+    public int ShowScore()
+    {
+        return score;
     }
 }
